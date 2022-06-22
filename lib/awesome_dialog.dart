@@ -21,6 +21,7 @@ enum DialogType {
   QUESTION,
   NO_HEADER
 }
+
 enum AnimType { SCALE, LEFTSLIDE, RIGHSLIDE, BOTTOMSLIDE, TOPSLIDE }
 
 enum DismissType {
@@ -61,6 +62,9 @@ class AwesomeDialog {
   /// Create your own Widget for body, if this property is set title and description will be ignored.
   final Widget? body;
 
+  /// The [TextStyle] of the btnOk
+  final TextStyle? btnOkTextStyle;
+
   /// Text for the Ok button
   final String? btnOkText;
 
@@ -72,6 +76,9 @@ class AwesomeDialog {
 
   /// Color of the Ok Button
   final Color? btnOkColor;
+
+  /// The [TextStyle] of the btnCancel
+  final TextStyle? btnCancelTextStyle;
 
   /// Text for the Cancel button
   final String? btnCancelText;
@@ -185,10 +192,12 @@ class AwesomeDialog {
     this.body,
     this.btnOk,
     this.btnCancel,
+    this.btnOkTextStyle,
     this.btnOkText,
     this.btnOkIcon,
     this.btnOkOnPress,
     this.btnOkColor,
+    this.btnCancelTextStyle,
     this.btnCancelText,
     this.btnCancelIcon,
     this.btnCancelOnPress,
@@ -352,7 +361,7 @@ class AwesomeDialog {
         color: btnOkColor ?? const Color(0xFF00CA71),
         icon: btnOkIcon,
         borderRadius: buttonsBorderRadius,
-        buttonTextStyle: buttonsTextStyle,
+        buttonTextStyle: btnOkTextStyle ?? buttonsTextStyle,
       );
 
   /// Returns the default `Cancel Button` widget
@@ -367,7 +376,7 @@ class AwesomeDialog {
         color: btnCancelColor ?? Colors.red,
         icon: btnCancelIcon,
         borderRadius: buttonsBorderRadius,
-        buttonTextStyle: buttonsTextStyle,
+        buttonTextStyle: btnCancelTextStyle ?? buttonsTextStyle,
       );
 
   /// Called to dismiss the dialog using the [Navigator.pop] method
