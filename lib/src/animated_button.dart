@@ -30,6 +30,9 @@ class AnimatedButton extends StatefulWidget {
   /// Textstyle to use for the text of the [AnimatedButton]
   final TextStyle? buttonTextStyle;
 
+  /// Textstyle to use for the text of the [AnimatedButton]
+  final ButtonStyle? buttonStyle;
+
   const AnimatedButton({
     Key? key,
     required this.pressEvent,
@@ -41,6 +44,7 @@ class AnimatedButton extends StatefulWidget {
     this.width = double.infinity,
     this.borderRadius,
     this.buttonTextStyle,
+    this.buttonStyle,
   }) : super(key: key);
 
   @override
@@ -108,16 +112,17 @@ class _AnimatedButtonState extends State<AnimatedButton>
         width: widget.width,
         height: widget.isFixedHeight ? 50 : widget.height,
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            primary: widget.color,
-            shape: RoundedRectangleBorder(
-              borderRadius: widget.borderRadius ??
-                  const BorderRadius.all(
-                    Radius.circular(100),
-                  ),
-            ),
-          ),
+          style: widget.buttonStyle ??
+              ElevatedButton.styleFrom(
+                elevation: 0,
+                primary: widget.color,
+                shape: RoundedRectangleBorder(
+                  borderRadius: widget.borderRadius ??
+                      const BorderRadius.all(
+                        Radius.circular(100),
+                      ),
+                ),
+              ),
           onPressed: _onTap,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,

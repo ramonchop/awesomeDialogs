@@ -65,6 +65,9 @@ class AwesomeDialog {
   /// The [TextStyle] of the btnOk
   final TextStyle? btnOkTextStyle;
 
+  /// The [ButtonStyle] of the btnOk
+  final ButtonStyle? btnOkStyle;
+
   /// Text for the Ok button
   final String? btnOkText;
 
@@ -79,6 +82,9 @@ class AwesomeDialog {
 
   /// The [TextStyle] of the btnCancel
   final TextStyle? btnCancelTextStyle;
+
+  /// The [ButtonStyle] of the btnOk
+  final ButtonStyle? btnCancelStyle;
 
   /// Text for the Cancel button
   final String? btnCancelText;
@@ -225,6 +231,8 @@ class AwesomeDialog {
     this.barrierColor = Colors.black54,
     this.enableEnterKey = false,
     this.bodyHeaderDistance = 15.0,
+    this.btnOkStyle,
+    this.btnCancelStyle,
   }) : assert(
           autoDismiss || onDissmissCallback != null,
           'If autoDismiss is false, you must provide an onDissmissCallback to pop the dialog',
@@ -362,6 +370,7 @@ class AwesomeDialog {
         icon: btnOkIcon,
         borderRadius: buttonsBorderRadius,
         buttonTextStyle: btnOkTextStyle ?? buttonsTextStyle,
+        buttonStyle: btnOkStyle,
       );
 
   /// Returns the default `Cancel Button` widget
@@ -377,6 +386,7 @@ class AwesomeDialog {
         icon: btnCancelIcon,
         borderRadius: buttonsBorderRadius,
         buttonTextStyle: btnCancelTextStyle ?? buttonsTextStyle,
+        buttonStyle: btnCancelStyle,
       );
 
   /// Called to dismiss the dialog using the [Navigator.pop] method
